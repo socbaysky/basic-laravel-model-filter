@@ -93,17 +93,17 @@ class ModelFilterCommand extends Command
 
     private function checkQueryFilterExists() {
         if (! is_file($path = app_path('Filters/QueryFilter.php'))) {
-            $this->error("Error: Filters/QueryFilter.php exists!");
             return false;
         }
+        $this->error("Error: Filters/QueryFilter.php exists!");
         return true;
     }
 
     private function checkFilterableExists() {
         if (! is_file($path = app_path('Traits/Filterable.php'))) {
-            $this->error("Error: Traits/Filterable.php exists!");
             return false;
         }
+        $this->error("Error: Traits/Filterable.php exists!");
         return true;
     }
 
