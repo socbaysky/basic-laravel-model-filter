@@ -1,0 +1,30 @@
+{
+    "name": "socbaysky/laravel-model-filter",
+    "description": "Easy to use package that provides an easy implementation of Model Filter within Laravel",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Le Viet Anh",
+            "email": "admin@w4vn.net"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Vitti\\LaravelModelFilter\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Vitti\\LaravelModelFilter\\ServiceProvider"
+            ]
+        }
+    },
+    "require": {
+        "php": "^7.0",
+        "laravel/framework": "^6.0"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

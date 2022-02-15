@@ -1,0 +1,12 @@
+<?php
+
+namespace {{namespace}}Filters;
+
+class {{model_name}}Filter extends QueryFilter
+{
+    protected $filterable = [
+        {{filterable_column}}
+    ];
+    
+    {{filter_method}}
+}

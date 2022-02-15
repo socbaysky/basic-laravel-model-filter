@@ -1,0 +1,4 @@
+    public function filter{{column_name_upper}}(${{column_name}})
+    {
+        return $this->builder->where('{{column_name}}', 'like', '%' . ${{column_name}} . '%');
+    }
