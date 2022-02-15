@@ -212,6 +212,8 @@ class ModelFilterCommand extends Command
                 $modelMethod
             );
         }
+
+        $this->info($modelMethod);
         return $modelMethod;
     }
 }
