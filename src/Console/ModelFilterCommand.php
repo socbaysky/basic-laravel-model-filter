@@ -216,18 +216,27 @@ class ModelFilterCommand extends Command
     protected function compileModelMethodStub() {
         $modelMethod = '';
         foreach ($this->modelColumns as $key => $column) {
+            $temp = '';
             if($key == 0) {
-                $modelMethod = str_replace(
+                $temp = str_replace(
                     '{{column_name_upper}}',
                     ucfirst($column),
                     file_get_contents(__DIR__.'/stubs/filters/FilterMethod.stub')
                 );
+            } else {
+                $temp = str_replace(
+                    '{{column_name_upper}}',
+                    ucfirst($column),
+                    $modelMethod
+                );
             }
-            $modelMethod .= str_replace(
+            $temp = str_replace(
                 '{{column_name}}',
                 $column,
-                $modelMethod
+                $temp
             );
+            $modelMethod .= $temp;
+            
         }
 
         // $this->info($modelMethod);
