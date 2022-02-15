@@ -192,6 +192,7 @@ class ModelFilterCommand extends Command
             $columns = Schema::getColumnListing($model->getTable());
             $this->modelColumns = $columns;
         }
+        $this->error($class);
         throw new \Exception("Error class model!"); 
     }
 
