@@ -8,5 +8,5 @@ class {{model_name}}Filter extends QueryFilter
         {{filterable_column}}
     ];
     
-    {{filter_method}}
+{{filter_method}}
 }
