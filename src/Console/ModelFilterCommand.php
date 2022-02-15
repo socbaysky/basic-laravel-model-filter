@@ -214,27 +214,20 @@ class ModelFilterCommand extends Command
     }
 
     protected function compileModelMethodStub() {
-        $modelMethod = file_get_contents(__DIR__.'/stubs/filters/FilterMethod.stub');
+        $modelMethod = '';
         foreach ($this->modelColumns as $key => $column) {
-            // if($key == 0) {
-            //     $modelMethod = str_replace(
-            //         '{{column_name_upper}}',
-            //         ucfirst($column),
-            //         $modelMethod
-            //     );
-            // } else {
-            //     $modelMethod .= str_replace(
-            //         '{{column_name_upper}}',
-            //         ucfirst($column),
-            //         $modelMethod
-            //     );
-            // }
-            // $modelMethod .= str_replace(
-            //     '{{column_name}}',
-            //     $column,
-            //     $modelMethod
-            // );
-            $this->info($column);
+            if($key == 0) {
+                $modelMethod = str_replace(
+                    '{{column_name_upper}}',
+                    ucfirst($column),
+                    file_get_contents(__DIR__.'/stubs/filters/FilterMethod.stub')
+                );
+            }
+            $modelMethod .= str_replace(
+                '{{column_name}}',
+                $column,
+                $modelMethod
+            );
         }
 
         // $this->info($modelMethod);
