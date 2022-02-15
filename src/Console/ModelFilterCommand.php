@@ -85,10 +85,12 @@ class ModelFilterCommand extends Command
             );
         }
 
-        file_put_contents(
-            app_path('Traits/Filterable.php'),
-            $this->compileFilterableTraitStub()
-        );
+        if(!$this->checkFilterableExists()) {
+            file_put_contents(
+                app_path('Filters/'. $this->modelClassName .'Filter.php'),
+                $this->compileModelFilterStub()
+            );
+        }
     }
 
     private function checkQueryFilterExists() {
