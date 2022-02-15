@@ -109,7 +109,7 @@ class ModelFilterCommand extends Command
         if (! is_file($path = app_path('Filters/QueryFilter.php'))) {
             return false;
         }
-        $this->error("Error: Filters/QueryFilter.php exists!");
+        // $this->info("Error: Filters/QueryFilter.php exists!");
         return true;
     }
 
@@ -117,7 +117,7 @@ class ModelFilterCommand extends Command
         if (! is_file($path = app_path('Traits/Filterable.php'))) {
             return false;
         }
-        $this->error("Error: Traits/Filterable.php exists!");
+        // $this->info("Error: Traits/Filterable.php exists!");
         return true;
     }
 
@@ -232,10 +232,8 @@ class ModelFilterCommand extends Command
                 $temp
             );
             $modelMethod .= $temp;
-            
         }
 
-        // $this->info($modelMethod);
         return $modelMethod;
     }
 }
