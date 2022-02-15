@@ -51,7 +51,9 @@ class ModelFilterCommand extends Command
     }
 
     protected function getClassName($class) {
-        return get_class(new $class());
+        $class = explode("\\",get_class(new $class()));
+        return $class[count($class) - 1];
+
     }
 
     /**
