@@ -97,7 +97,7 @@ class ModelFilterCommand extends Command
         if (! is_file($path = app_path($this->argument('model') . '.php'))) {
             return false;
         }
-        $this->error("Error: Filters/QueryFilter.php exists!");
+        $this->error("Error: Filters/" . $this->modelClassName . " exists!");
         return true;
     }
 
