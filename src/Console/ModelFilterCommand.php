@@ -186,14 +186,17 @@ class ModelFilterCommand extends Command
 
     // Get column name from model in db
     protected function getColumnFromModel() {
-        $class = 'App\\' . $this->argument('model');
-        if(class_exists($class)) {
+        try {
+            $class = 'App\\' . $this->argument('model');
             $model = new $class();
             $columns = Schema::getColumnListing($model->getTable());
             $this->modelColumns = $columns;
+             
+        } catch (\Throwable $th) {
+            $this->error($class);
+            throw new \Exception("Error class model!");
         }
-        $this->error($class);
-        throw new \Exception("Error class model!"); 
+        
     }
 
     protected function compileModelMethodStub() {
