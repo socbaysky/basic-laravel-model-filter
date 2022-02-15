@@ -35,6 +35,8 @@ class ModelFilterCommand extends Command
         $model = $this->argument('model');
         $this->modelClassName = $this->getClassName('App\\' . $model);
 
+        $this->info($model);
+
         if($this->checkModelExists($model)) {
             $this->getColumnFromModel();
 
