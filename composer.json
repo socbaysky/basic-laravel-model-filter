@@ -1,5 +1,5 @@
 {
-    "name": "socbaysky/laravel-model-filter",
+    "name": "socbaysky/laravel-model-filter-basic",
     "description": "Easy to use package that provides an easy implementation of Model Filter within Laravel",
     "type": "library",
     "license": "MIT",
