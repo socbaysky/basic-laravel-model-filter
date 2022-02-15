@@ -85,12 +85,20 @@ class ModelFilterCommand extends Command
             );
         }
 
-        if(!$this->checkFilterableExists()) {
+        if(!$this->checkModelFilterExists()) {
             file_put_contents(
                 app_path('Filters/'. $this->modelClassName .'Filter.php'),
                 $this->compileModelFilterStub()
             );
         }
+    }
+
+    private function checkModelFilterExists() {
+        if (! is_file($path = app_path($this->argument('model') . '.php'))) {
+            return false;
+        }
+        $this->error("Error: Filters/QueryFilter.php exists!");
+        return true;
     }
 
     private function checkQueryFilterExists() {
