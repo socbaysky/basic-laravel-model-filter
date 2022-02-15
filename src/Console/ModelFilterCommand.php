@@ -214,7 +214,7 @@ class ModelFilterCommand extends Command
     }
 
     protected function compileModelMethodStub() {
-        
+        $modelMethod = '';
         foreach ($this->modelColumns as $column) {
             $modelMethod = str_replace(
                 '{{column_name_upper}}',
