@@ -35,6 +35,8 @@ class ModelFilterCommand extends Command
         $model = $this->argument('model');
         $this->modelClassName = $this->getClassName('App\\' . $model);
 
+        $this->info("model class name: " . $this->modelClassName);
+
         $this->info($model);
 
         if($this->checkModelExists($model)) {
@@ -97,7 +99,7 @@ class ModelFilterCommand extends Command
         if (! is_file($path = app_path($this->argument('model') . '.php'))) {
             return false;
         }
-        $this->error("Error: Filters/" . $this->modelClassName . " exists!");
+        $this->error("Error: Filters\\" . $this->modelClassName . " exists!");
         return true;
     }
 
