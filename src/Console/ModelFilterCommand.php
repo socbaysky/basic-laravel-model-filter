@@ -23,6 +23,7 @@ class ModelFilterCommand extends Command
     protected $description = 'Scaffold basic Query Filter for your Model';
 
     protected $modelClassName = '';
+    protected $modelColumns = [];
 
     /**
      * Execute the console command.
@@ -35,6 +36,8 @@ class ModelFilterCommand extends Command
         $this->modelClassName = $this->getClassName('App\\' . $model);
 
         if($this->checkModelExists($model)) {
+            $this->getColumnFromModel();
+
             $this->ensureDirectoriesExists();
 
             $this->exportBackend();
@@ -165,14 +168,14 @@ class ModelFilterCommand extends Command
         // replace filterable_column
         $modelFilter = str_replace(
             '{{filterable_column}}',
-            $this->getColumnFromModel(),
+            "'" . implode("', '", $this->modelColumns) . "'",
             $modelFilter
         );
 
         // build model_method
         $modelFilter = str_replace(
-            '{{filterable_column}}',
-            $this->getColumnFromModel(),
+            '{{filter_method}}',
+            $this->compileModelMethodStub(),
             $modelFilter
         );
 
@@ -185,7 +188,7 @@ class ModelFilterCommand extends Command
         if(class_exists($class)) {
             $model = new $class();
             $columns = Schema::getColumnListing($model->getTable());
-            return "'" . implode("', '", $columns) . "'";
+            $this->modelColumns = $columns;
         }
         throw new Exception("Error class model!"); 
     }
@@ -194,7 +197,15 @@ class ModelFilterCommand extends Command
         $modelMethod = str_replace(
             '{{column_name_upper}}',
             ucfirst($this->modelClassName),
-            file_get_contents(__DIR__.'/stubs/filters/ModelMethod.stub')
+            file_get_contents(__DIR__.'/stubs/filters/FilterMethod.stub')
         );
+        foreach ($this->modelColumns as $column) {
+            $modelMethod = str_replace(
+                '{{column_name}}',
+                $column,
+                $modelMethod
+            );
+        }
+        return $modelMethod;
     }
 }
