@@ -98,7 +98,7 @@ class ModelFilterCommand extends Command
     }
 
     private function checkModelFilterExists() {
-        if (! is_file($path = app_path($this->argument('model') . '.php'))) {
+        if (! is_file($path = app_path('Filters' . $this->argument('model') . 'Filter.php'))) {
             return false;
         }
         $this->error("Error: Filters\\" . $this->modelClassName . " exists!");
@@ -227,7 +227,7 @@ class ModelFilterCommand extends Command
             );
         }
 
-        $this->info($modelMethod);
+        // $this->info($modelMethod);
         return $modelMethod;
     }
 }
