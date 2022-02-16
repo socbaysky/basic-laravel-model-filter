@@ -7,10 +7,12 @@ $ composer require socbaysky/laravel-model-filter-basic
 Create new filter for your model example:
 
 ```bash
-$ php artisan make:filter 'Models\User'
+$ php artisan make:filter 'Models\**User**'
 ```
 
 After run above command console, Laravel will automatically generate:
 - app/Filters/QueryFilter.php (only first time run above command)
 - app/Traits/Filterable.php (only first time run above command)
-- app/Filters/UserFilter.php (ensure this file is not exists)
+- app/Filters/**User**Filter.php (ensure this file is not exists)
+
+Then you can custom app/Filters/**User**Filter.php
