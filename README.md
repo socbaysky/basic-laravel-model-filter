@@ -16,9 +16,11 @@ Or:
 $ php artisan make:filter 'Models\AnyYourModel'
 ```
 
-After run above command console, Laravel will automatically generate:
+After run above commands console, Laravel will automatically generate:
 - app/Filters/QueryFilter.php (only first time run above command)
 - app/Traits/Filterable.php (only first time run above command)
 - app/Filters/**User**Filter.php (ensure this file is not exists)
+or
+- app/Filters/**AnyYourModel**Filter.php (ensure this file is not exists)
 
-Then you can custom app/Filters/**User**Filter.php
+Then you can custom app/Filters/**User**Filter.php or app/Filters/**AnyYourModel**Filter.php
