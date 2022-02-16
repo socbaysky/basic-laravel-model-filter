@@ -10,6 +10,12 @@ Create new filter for your model example:
 $ php artisan make:filter 'Models\User'
 ```
 
+Or:
+
+```bash
+$ php artisan make:filter 'Models\AnyYourModel'
+```
+
 After run above command console, Laravel will automatically generate:
 - app/Filters/QueryFilter.php (only first time run above command)
 - app/Traits/Filterable.php (only first time run above command)
