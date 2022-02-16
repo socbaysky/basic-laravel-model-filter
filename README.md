@@ -7,7 +7,7 @@ $ composer require socbaysky/laravel-model-filter-basic
 Create new filter for your model example:
 
 ```bash
-$ php artisan make:filter 'Models\**User**'
+$ php artisan make:filter 'Models\User'
 ```
 
 After run above command console, Laravel will automatically generate:
